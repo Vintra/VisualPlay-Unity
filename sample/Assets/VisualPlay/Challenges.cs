@@ -95,7 +95,7 @@ namespace VisualPlay {
 			private string accessToken;
 			private string userId;
 			private string userProfile = null;
-			private bool userFinalizeFeedback = true;
+			private bool challengeFinalizeFeedback = true;
 			private string language = Get2LetterISOCodeFromSystemLanguage();
 
 			public VisualPlayOptions(string accesToken) {
@@ -116,8 +116,8 @@ namespace VisualPlay {
 				this.userProfile = jsonUserProfile;
 				return this;
 			}
-			public VisualPlayOptions SetUserFinalizeFeedback(bool userFinalizeFeedback) {
-				this.userFinalizeFeedback = userFinalizeFeedback;
+			public VisualPlayOptions SetChallengeFinalizeFeedback(bool challengeFinalizeFeedback) {
+				this.challengeFinalizeFeedback = challengeFinalizeFeedback;
 				return this;
 			}
 
@@ -142,9 +142,9 @@ namespace VisualPlay {
 					return userProfile;
 				}
 			}
-			public bool UserFinalizeFeedback {
+			public bool ChallengeFinalizeFeedback {
 				get {
-					return userFinalizeFeedback;
+					return challengeFinalizeFeedback;
 				}
 			}
 		}
@@ -261,7 +261,7 @@ namespace VisualPlay {
 								user_id: '"+this._options.UserId+@"',
 								language: '"+this._options.Language+@"',
 								user_profile: "+((this._options.UserProfile!=null) ? this._options.UserProfile : "''")+@",
-								user_finalize_feedback: " + this._options.UserFinalizeFeedback.ToString().ToLower() + @"
+								challenge_finalize_feedback: " + this._options.ChallengeFinalizeFeedback.ToString().ToLower() + @"
 							}";
 							webViewObject.EvaluateJS("Init("+initData+");");
 							break;
